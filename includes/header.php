@@ -107,15 +107,24 @@
                                         <li>
                                             <a href="add_tithe.php"><i class="fa fa-credit-card"></i> Post Tithe</a>
                                         </li>
-                                    <li>
-                                        <a href="reverse_tithe.php"><i class="fa fa-undo"></i> Tithe Reversal</a>
-                                    </li>
-                                    <li>
-                                        <a href="daily_transact_grid.php"><i class="fa fa-history"></i> View Daily Posting</a>
-                                    </li>
-                                    <li>
-                                        <a href="reprint_tithe.php"><i class="fa fa-search"></i> Search Receipt(s)</a>
-                                    </li>
+                                        <li>
+                                            <a href="reverse_tithe.php"><i class="fa fa-undo"></i> Tithe Reversal</a>
+                                        </li>
+                                        <li>
+                                            <a href="reversal_transact_grid.php"><i class="fa fa-thumbs-o-up"></i> Approve Tithe Reversal</a>
+                                        </li>
+                                        <li>
+                                            <a href="daily_transact_grid.php"><i class="fa fa-history"></i> View Transactions</a>
+                                        </li>
+                                        <li>
+                                            <a href="reprint_tithe.php"><i class="fa fa-search"></i> Search Receipt(s)</a>
+                                        </li>
+                                        <li>
+                                            <a href="assign_receipt_book.php"><i class="fa fa-book"></i> Assign Receipt(s)</a>
+                                        </li>
+                                        <li>
+                                            <a href="printer_setup.php"><i class="fa fa-wrench"></i> Setup Printer</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <?php
