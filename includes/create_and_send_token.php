@@ -80,8 +80,6 @@ function send_token_to_phone_and_email() {
         if ($db->count>=1) {
 
             $the_user = $row[0];
-            var_dump($the_user);
-            echo '<br /><br />' . $the_user['email'] . '<br /><br />' . $the_token;
             send_sms_to_phone('cashier_token', $the_user['phone'], $the_message);
             mail(
                 $the_user['email'],
