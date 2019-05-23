@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 22, 2019 at 07:49 AM
+-- Generation Time: May 23, 2019 at 09:01 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `testot`
+-- Database: `admincore`
 --
 
 -- --------------------------------------------------------
@@ -40,21 +40,23 @@ CREATE TABLE IF NOT EXISTS `admin_accounts` (
   `series_id` varchar(60) DEFAULT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
   `expires` datetime DEFAULT NULL,
-  `admin_type` varchar(50) NOT NULL,
+  `admin_type` varchar(10) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `user_name` (`user_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `admin_accounts`
 --
 
 INSERT INTO `admin_accounts` (`id`, `user_name`, `surname`, `firstname`, `phone`, `email`, `passwd`, `series_id`, `remember_token`, `expires`, `admin_type`) VALUES
-(3, 'root', '', '', '', '', '$2y$10$syHHgu.lgAUcLH/p1bJNRuQcLqwBVDNsL5mYnS3uVL4gs7apT1pni', NULL, NULL, NULL, 'cashier'),
+(3, 'root', '', '', '', '', '$2y$10$syHHgu.lgAUcLH/p1bJNRuQcLqwBVDNsL5mYnS3uVL4gs7apT1pni', NULL, NULL, NULL, 'admin'),
 (4, 'superadmin', 'Akinbode', 'Olajimi', '', '', '$2y$10$xpZc5KC.aU2XHkcqhuZGFuAnqmtL4Unt8MysOyylceq.19XIyoZpG', 'DdZzItBKHGSInLgE', '$2y$10$apWEX/2YTdGcwSAdT2J.nO6JfBAqN4BJmrINvu3GdndfLTWsyNyHi', '2019-03-26 19:03:11', 'super'),
-(5, 'admin', '', '', '', '', '$2y$10$cdZ3CPS1O7T/BdL6wRrxwe3SrX34SZ1585hwNoYK68ujKXJK6U0hy', NULL, NULL, NULL, 'cashier'),
-(6, 'chetanw', '', '', '', '', '$2y$10$iJSznl9t/iJmJWW1GcJyS.QJJ/pt8bR.jaixq5eZRzhbmGTW2QMLK', NULL, NULL, NULL, 'cashier'),
-(7, 'tunji', 'Shoyemi', 'Tunji', '08132628062', 'olatunjishoyemi@gmail.com', '$2y$10$h/KnF0D82pEg1jrOQZ8x9Oc3llwXw8hGvJfhI25Cv56fZJMfg.Egm', NULL, NULL, NULL, 'super');
+(5, 'admin', '', '', '', '', '$2y$10$cdZ3CPS1O7T/BdL6wRrxwe3SrX34SZ1585hwNoYK68ujKXJK6U0hy', NULL, NULL, NULL, 'admin'),
+(6, 'chetanw', '', '', '', '', '$2y$10$iJSznl9t/iJmJWW1GcJyS.QJJ/pt8bR.jaixq5eZRzhbmGTW2QMLK', NULL, NULL, NULL, 'admin'),
+(7, 'tunji', 'Shoyemi', 'Tunji', '08132628062', 'olatunjishoyemi@gmail.com', '$2y$10$h/KnF0D82pEg1jrOQZ8x9Oc3llwXw8hGvJfhI25Cv56fZJMfg.Egm', NULL, NULL, NULL, 'super'),
+(37, 'thesupercashier', 'Shogade', 'Adewale', '08029829615', 'shogzytol@aol.com', '$2y$10$F7KQp6cx3HRuUMvFDerdzuQaO5SD6IW8pIQRC4qFOP2yjrqNQ03c6', 'k18yivBLDNxqcISJ', '$2y$10$Cws2P5I2jq/MJwEjc9z3Je9d3lQeQGSzdwjvyRLEmes2oB2kv5912', '2019-04-22 18:13:04', 'supercashr'),
+(38, 'thecashier', 'Dave', 'Michael', '07056438222', 'masterdevteams@gmail.com', '$2y$10$AxF4pEbCgVuvk0JEjWI.UeE0zKi4zBgHe6/6pbtYEgybKM4X6tqkO', NULL, NULL, NULL, 'cashier');
 
 -- --------------------------------------------------------
 
@@ -105,39 +107,263 @@ CREATE TABLE IF NOT EXISTS `admin_activity` (
   `activity` text NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `admin_id` (`admin_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=360 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `admin_activity`
 --
 
 INSERT INTO `admin_activity` (`id`, `admin_id`, `session_id`, `date`, `activity`) VALUES
-(1, 4, '1uiegp09vqnuh9tabqb11j6ck1', '2019-03-09 20:10:10', 'Akinbode Olajimi logged in as superadmin on Sat, Mar, 09, 2019 08:10:10: PM'),
-(2, 4, '1uiegp09vqnuh9tabqb11j6ck1', '2019-03-10 13:36:32', 'Akinbode Olajimi(superadmin) Logged Out on Sun, Mar, 10, 2019 01:36:31: PM'),
-(3, 4, '1uiegp09vqnuh9tabqb11j6ck1', '2019-03-10 13:36:48', 'Akinbode Olajimi logged in as superadmin on Sun, Mar, 10, 2019 01:36:48: PM'),
-(4, 4, '1uiegp09vqnuh9tabqb11j6ck1', '2019-03-11 10:33:36', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Mar, 11, 2019 10:33:36: AM'),
-(5, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-11 10:45:26', 'Akinbode Olajimi logged in as superadmin on Mon, Mar, 11, 2019 10:45:26: AM'),
-(6, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-23 21:42:37', 'Akinbode Olajimi(superadmin) Logged Out on Sat, Mar, 23, 2019 09:42:37: PM'),
-(7, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-23 21:43:14', 'Akinbode Olajimi logged in as superadmin on Sat, Mar, 23, 2019 09:43:14: PM'),
-(8, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-24 11:03:19', 'Akinbode Olajimi(superadmin) Logged Out on Sun, Mar, 24, 2019 11:03:19: AM'),
-(9, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-24 11:11:47', 'Akinbode Olajimi logged in as superadmin on Sun, Mar, 24, 2019 11:11:47: AM'),
-(10, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-24 11:29:44', 'Akinbode Olajimi(superadmin) Logged Out on Sun, Mar, 24, 2019 11:29:44: AM'),
-(11, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-24 11:29:57', 'Akinbode Olajimi logged in as superadmin on Sun, Mar, 24, 2019 11:29:57: AM'),
-(12, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-25 10:02:33', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Mar, 25, 2019 10:02:33: AM'),
-(13, 4, 'pus6cam5sa27f766gia9ss86fb', '2019-03-25 10:22:31', 'Akinbode Olajimi logged in as superadmin on Mon, Mar, 25, 2019 10:22:31: AM'),
-(14, 4, 'ge81o12a3disqr8tvjt97mhgfp', '2019-03-27 11:20:45', 'Akinbode Olajimi logged in as superadmin on Wed, Mar, 27, 2019 11:20:45: AM'),
-(15, 4, 'ge81o12a3disqr8tvjt97mhgfp', '2019-03-28 11:05:44', 'Akinbode Olajimi(superadmin) Logged Out on Thu, Mar, 28, 2019 11:05:44: AM'),
-(16, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-03-29 09:56:26', 'Akinbode Olajimi logged in as superadmin on Fri, Mar, 29, 2019 09:56:25: AM'),
-(17, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-03-29 15:45:08', 'Akinbode Olajimi(superadmin) Logged Out on Fri, Mar, 29, 2019 03:45:08: PM'),
-(18, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-03-31 08:47:43', 'Akinbode Olajimi logged in as superadmin on Sun, Mar, 31, 2019 08:47:43: AM'),
-(19, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-09 11:26:29', 'Akinbode Olajimi(superadmin) Logged Out on Tue, Apr, 09, 2019 11:26:29: AM'),
-(20, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-09 11:30:24', 'Akinbode Olajimi logged in as superadmin on Tue, Apr, 09, 2019 11:30:24: AM'),
-(21, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-14 14:52:07', 'Akinbode Olajimi(superadmin) Logged Out on Sun, Apr, 14, 2019 02:52:07: PM'),
-(22, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-14 14:57:38', 'Akinbode Olajimi logged in as superadmin on Sun, Apr, 14, 2019 02:57:38: PM'),
-(23, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-14 15:00:22', 'Akinbode Olajimi(superadmin) added a New Member (Badmus Ogunlade) on Sun, Apr, 14, 2019 03:00:22: PM'),
-(24, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-14 16:17:58', 'Akinbode Olajimi(superadmin) Logged Out on Sun, Apr, 14, 2019 04:17:58: PM'),
-(25, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-16 20:52:22', 'Akinbode Olajimi logged in as superadmin on Tue, Apr, 16, 2019 08:52:22: PM'),
-(26, 4, 'b8ng000o7fu95edkal9fr3hfts', '2019-04-16 21:03:22', 'Akinbode Olajimi logged in as superadmin on Tue, Apr, 16, 2019 09:03:22: PM');
+(234, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 18:09:49', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 06:09:49: PM'),
+(233, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 18:04:30', 'Dwayne Johnson(thesupercashier) Logged Out on Sun, Apr, 21, 2019 06:04:30: PM'),
+(232, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 16:46:30', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 04:46:30: PM'),
+(231, 38, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 16:45:47', 'Olaoluwa David logged in as thecashier on Sun, Apr, 21, 2019 04:45:47: PM'),
+(230, 37, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 17:01:32', 'Dwayne Johnson(thesupercashier) Logged Out on Mon, Apr, 15, 2019 05:01:32: PM'),
+(229, 37, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 15:57:25', 'Dwayne Johnson logged in as thesupercashier on Mon, Apr, 15, 2019 03:57:25: PM'),
+(228, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 15:57:13', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 03:57:13: PM'),
+(227, 38, '7sq9qmhdnb4n4f29sef9kll9eq', '2019-04-15 15:56:56', 'Olaoluwa David logged in as thecashier on Mon, Apr, 15, 2019 03:56:56: PM'),
+(226, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 15:56:35', 'The user Dwayne Johnson with username - thesupercashier, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 03:56:35: PM'),
+(225, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 15:56:18', 'The user Olaoluwa David with username - thecashier, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 03:56:18: PM'),
+(224, 38, '7sq9qmhdnb4n4f29sef9kll9eq', '2019-04-15 15:55:50', 'Olaoluwa David logged in as thecashier on Mon, Apr, 15, 2019 03:55:50: PM'),
+(223, 38, '7sq9qmhdnb4n4f29sef9kll9eq', '2019-04-15 09:44:13', 'Onokaye David logged in as Dravlink on Mon, Apr, 15, 2019 09:44:13: AM'),
+(221, 38, '7sq9qmhdnb4n4f29sef9kll9eq', '2019-04-15 09:43:40', 'Onokaye David logged in as Dravlink on Mon, Apr, 15, 2019 09:43:40: AM'),
+(222, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:43:51', 'The user Onokaye David with username - Dravlink, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 09:43:51: AM'),
+(220, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:43:05', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:43:05: AM'),
+(219, 38, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:42:53', 'Onokaye David(Dravlink) Logged Out on Mon, Apr, 15, 2019 09:42:53: AM'),
+(218, 38, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:42:49', 'Onokaye David logged in as Dravlink on Mon, Apr, 15, 2019 09:42:49: AM'),
+(217, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:42:38', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:42:38: AM'),
+(216, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:42:23', 'The user Onokaye David with username - Dravlink, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 09:42:23: AM'),
+(215, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:42:13', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:42:13: AM'),
+(214, 38, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:41:56', 'Onokaye David(Dravlink) Logged Out on Mon, Apr, 15, 2019 09:41:56: AM'),
+(212, 37, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:40:48', 'Mike Alex(Michael89) Logged Out on Mon, Apr, 15, 2019 09:40:48: AM'),
+(213, 38, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:40:54', 'Onokaye David logged in as Dravlink on Mon, Apr, 15, 2019 09:40:54: AM'),
+(211, 37, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:40:44', 'Mike Alex(Michael89) added a New Person - Onokaye David(Dravlink) as Cashier on Mon, Apr, 15, 2019 09:40:44: AM'),
+(210, 37, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:37:38', 'Mike Alex logged in as Michael89 on Mon, Apr, 15, 2019 09:37:38: AM'),
+(209, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:37:33', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:37:33: AM'),
+(208, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:37:26', 'Akinbode Olajimi(superadmin) added a New Person - Mike Alex(Michael89) as Super Cashier on Mon, Apr, 15, 2019 09:37:26: AM'),
+(207, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:37:00', 'Akinbode Olajimi(superadmin) deleted an Admin (Mike Alex) with the username Michael89 on Mon, Apr, 15, 2019 09:37:00: AM'),
+(206, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:36:45', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:36:45: AM'),
+(205, 36, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:36:38', 'Mike Alex(Michael89) Logged Out on Mon, Apr, 15, 2019 09:36:38: AM'),
+(203, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:33:28', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:33:28: AM'),
+(204, 36, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:33:37', 'Mike Alex logged in as Michael89 on Mon, Apr, 15, 2019 09:33:37: AM'),
+(202, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:33:22', 'Akinbode Olajimi(superadmin) added a New Person - Mike Alex(Michael89) as Admin on Mon, Apr, 15, 2019 09:33:22: AM'),
+(201, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:32:56', 'Akinbode Olajimi(superadmin) deleted a Supercashr (Mike Alex) with the username  Michael89 on Mon, Apr, 15, 2019 09:32:56: AM'),
+(200, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:32:49', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:32:49: AM'),
+(199, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:29:17', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:29:17: AM'),
+(198, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:29:06', 'Akinbode Olajimi(superadmin) added a New Person - Mike Alex( Michael89) as Super Cashier on Mon, Apr, 15, 2019 09:29:06: AM'),
+(197, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:28:38', 'Akinbode Olajimi(superadmin) deleted a Supercashr (Osikoya Michael) with the username  Michale89 on Mon, Apr, 15, 2019 09:28:38: AM'),
+(196, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:28:29', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:28:29: AM'),
+(195, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:25:44', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:25:44: AM'),
+(194, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:25:38', 'Akinbode Olajimi(superadmin) added a New Person - Osikoya Michael( Michale89) as Super Cashier on Mon, Apr, 15, 2019 09:25:38: AM'),
+(193, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:25:18', 'Akinbode Olajimi(superadmin) deleted a Supercashr (Mike Alex) with the username    Michael89 on Mon, Apr, 15, 2019 09:25:18: AM'),
+(192, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:25:14', 'Akinbode Olajimi(superadmin) deleted a Cashier (Onokaye David) with the username    Dravlink on Mon, Apr, 15, 2019 09:25:14: AM'),
+(191, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:25:09', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:25:09: AM'),
+(190, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:24:48', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:24:48: AM'),
+(189, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:23:22', 'The user Mike Alex with username -    Michael89, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 09:23:22: AM'),
+(188, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:23:10', 'The user Onokaye David with username -    Dravlink, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 09:23:10: AM'),
+(187, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:22:50', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:22:50: AM'),
+(186, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:22:38', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:22:38: AM'),
+(185, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:22:07', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:22:07: AM'),
+(184, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:22:03', 'The user Mike Alex with username -   Michael89, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 09:22:03: AM'),
+(183, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:21:56', 'The user Onokaye David with username -   Dravlink, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 09:21:56: AM'),
+(182, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:21:41', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 09:21:41: AM'),
+(181, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 09:20:14', 'Akinbode Olajimi(superadmin) Logged Out on Mon, Apr, 15, 2019 09:20:14: AM'),
+(180, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 08:33:22', 'The Member - Adesola Olusola with email - adesola@gmail.com, was edited by Akinbode Olajimi(superadmin) on Mon, Apr, 15, 2019 08:33:22: AM'),
+(179, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 08:32:46', 'The Member Sola Israel with email - sola@sola.com, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 08:32:46: AM'),
+(178, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 08:31:34', 'The user   with username - , was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 08:31:34: AM'),
+(177, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 08:27:59', 'The user Onokaye David with username -  Dravlink, was edited by Akinbode Olajimi(superadmin)  on Mon, Apr, 15, 2019 08:27:59: AM'),
+(176, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 08:11:45', 'Akinbode Olajimi(superadmin) edited Admin with username  Michael89  on Mon, Apr, 15, 2019 08:11:45: AM'),
+(175, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:41:32', 'Akinbode Olajimi(superadmin) deleted a Cashier (Meghan Trenor) with the username meghnsings on Mon, Apr, 15, 2019 07:41:32: AM'),
+(174, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:41:02', 'Akinbode Olajimi(superadmin) added a New Person - Meghan Trenor(meghnsings) as Cashier on Mon, Apr, 15, 2019 07:41:02: AM'),
+(173, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:38:25', 'Akinbode Olajimi(superadmin) deleted a Cashier (Meghan Trenor)  with the username MeghanForAll on Mon, Apr, 15, 2019 07:38:25: AM'),
+(172, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:38:04', 'Akinbode Olajimi(superadmin) added a New Person - Meghan Trenor(MeghanForAll) as Cashier on Mon, Apr, 15, 2019 07:38:04: AM'),
+(171, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:34:42', 'Akinbode Olajimi(superadmin) deleted a cashieradewywjhbk KJVnnsljkvnlskvnl)  with the username adewunmi65andall on Mon, Apr, 15, 2019 07:34:42: AM'),
+(170, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:33:53', 'Akinbode Olajimi(superadmin) added a New Person - adewywjhbk KJVnnsljkvnlskvnl(adewunmi65andall) as Cashier on Mon, Apr, 15, 2019 07:33:53: AM'),
+(169, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:25:51', 'Akinbode Olajimi(superadmin) deleted a Member (Meghan Trenor)  with the email meghantrenorsings@gmail.com on Mon, Apr, 15, 2019 07:25:51: AM'),
+(168, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:25:25', 'Akinbode Olajimi(superadmin) deleted an Admin (TWEET MIKE)  with the username tweetitforall on Mon, Apr, 15, 2019 07:25:25: AM'),
+(167, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:25:10', 'Akinbode Olajimi(superadmin) added a New Person - TWEET MIKE(tweetitforall) as Cashier on Mon, Apr, 15, 2019 07:25:10: AM'),
+(166, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:20:22', 'Akinbode Olajimi(superadmin) deleted an Admin (ajfhasljksfnsf dkfjasndlfjkasNF)  with the username ADRWJWHBKJH on Mon, Apr, 15, 2019 07:20:22: AM'),
+(165, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:19:42', 'Akinbode Olajimi(superadmin) added a New Person - ajfhasljksfnsf dkfjasndlfjkasNF(ADRWJWHBKJH) as Cashier on Mon, Apr, 15, 2019 07:19:42: AM'),
+(164, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:18:04', 'Akinbode Olajimi(superadmin) deleted an Admin (Meghan Trnoe)  with the username M on Mon, Apr, 15, 2019 07:18:04: AM'),
+(163, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:17:40', 'Akinbode Olajimi(superadmin) added a New Person - Meghan Trnoe(meghantties) as Cashier on Mon, Apr, 15, 2019 07:17:40: AM'),
+(162, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:15:48', 'Akinbode Olajimi(superadmin) added a New Person - Meghan Trenmor(meghannites) as Cashier on Mon, Apr, 15, 2019 07:15:48: AM'),
+(161, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:14:08', 'Akinbode Olajimi(superadmin) added a New Person - Meghan Rebnor(MEGHANTRENOR) as Super Cashier on Mon, Apr, 15, 2019 07:14:08: AM'),
+(160, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:04:22', 'Akinbode Olajimi(superadmin) added a New Member (Meghan Trenor) on Mon, Apr, 15, 2019 07:04:22: AM'),
+(159, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:02:26', 'Akinbode Olajimi(superadmin) added a New Person - mEgan rrnoere(adewudfnksjf) as Cashier on Mon, Apr, 15, 2019 07:02:26: AM'),
+(158, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:01:06', 'Akinbode Olajimi(superadmin) deleted a Member (Christina Berlin)  with the email chetanshenai9@gmail.com on Mon, Apr, 15, 2019 07:01:06: AM'),
+(157, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:00:36', 'Akinbode Olajimi(superadmin) deleted a Member (Ana  Trujillo)  with the email chetanshenai9@gmail.com on Mon, Apr, 15, 2019 07:00:36: AM'),
+(156, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 07:00:12', 'Akinbode Olajimi(superadmin) deleted a Member (Janet atre)  with the email bhusahan2@gmail.com on Mon, Apr, 15, 2019 07:00:12: AM'),
+(155, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:59:30', 'Akinbode Olajimi(superadmin) deleted a Member (Christiana  Doe)  with the email chetanshenai9@gmail.com on Mon, Apr, 15, 2019 06:59:30: AM'),
+(154, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:59:10', 'Akinbode Olajimi(superadmin) deleted a Member (Jos Gadges)  with the email josgadgets@gmail.com on Mon, Apr, 15, 2019 06:59:10: AM'),
+(153, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:58:44', 'Akinbode Olajimi(superadmin) deleted a Member (Selewa  Sowore)  with the email  on Mon, Apr, 15, 2019 06:58:44: AM'),
+(152, 4, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:58:31', 'Akinbode Olajimi logged in as superadmin on Mon, Apr, 15, 2019 06:58:31: AM'),
+(151, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:58:23', 'Mike Alex(Michael89) Logged Out on Mon, Apr, 15, 2019 06:58:23: AM'),
+(150, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:58:05', 'Mike Alex logged in as Michael89 on Mon, Apr, 15, 2019 06:58:05: AM'),
+(149, 24, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:58:00', 'Onokaye David(Dravlink) Logged Out on Mon, Apr, 15, 2019 06:58:00: AM'),
+(148, 24, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:45:02', 'Onokaye David logged in as Dravlink on Mon, Apr, 15, 2019 06:45:02: AM'),
+(147, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:44:56', 'Mike Alex(Michael89) Logged Out on Mon, Apr, 15, 2019 06:44:56: AM'),
+(146, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:43:42', 'Mike Alex logged in as Michael89 on Mon, Apr, 15, 2019 06:43:42: AM'),
+(145, 24, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:43:30', 'Onokaye David(Dravlink) Logged Out on Mon, Apr, 15, 2019 06:43:30: AM'),
+(144, 24, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:43:21', 'Onokaye David logged in as Dravlink on Mon, Apr, 15, 2019 06:43:21: AM'),
+(143, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:43:15', 'Mike Alex(Michael89) Logged Out on Mon, Apr, 15, 2019 06:43:15: AM'),
+(142, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:43:04', 'Mike Alex logged in as Michael89 on Mon, Apr, 15, 2019 06:43:04: AM'),
+(141, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:42:51', 'Mike Alex(Michael89) Logged Out on Mon, Apr, 15, 2019 06:42:51: AM'),
+(140, 21, 'hg7l4vk4plo7m1q4801bnhada0', '2019-04-15 06:39:31', 'Mike Alex logged in as Michael89 on Mon, Apr, 15, 2019 06:39:31: AM'),
+(139, 21, 'orhaao7pdgt83bpig7klqbkmgk', '2019-04-14 09:34:06', 'Mike Alex(Michael89) added a New Member (Alex Mike) on Sun, Apr, 14, 2019 09:34:06: AM'),
+(138, 21, 'orhaao7pdgt83bpig7klqbkmgk', '2019-04-14 09:33:39', 'Mike Alex(Michael89) added a New Member (David Onokaye) on Sun, Apr, 14, 2019 09:33:39: AM'),
+(137, 21, 'orhaao7pdgt83bpig7klqbkmgk', '2019-04-14 09:32:54', 'Mike Alex(Michael89) added a New Member (Michael Osikoya) on Sun, Apr, 14, 2019 09:32:54: AM'),
+(136, 21, 'orhaao7pdgt83bpig7klqbkmgk', '2019-04-14 09:30:43', 'Mike Alex(Michael89) added a New Member (David Onokaye) on Sun, Apr, 14, 2019 09:30:43: AM'),
+(135, 21, 'orhaao7pdgt83bpig7klqbkmgk', '2019-04-14 09:29:49', 'Mike Alex(Michael89) added a New Member (Michael Osikoya) on Sun, Apr, 14, 2019 09:29:49: AM'),
+(134, 21, 'orhaao7pdgt83bpig7klqbkmgk', '2019-04-14 09:27:16', 'Mike Alex(Michael89) added a New Member (Michael Osikoya) on Sun, Apr, 14, 2019 09:27:16: AM'),
+(235, 38, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 18:12:00', 'Olaoluwa David(thecashier) Logged Out on Sun, Apr, 21, 2019 06:12:00: PM'),
+(236, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 18:12:22', 'Dwayne Johnson(thesupercashier) Logged Out on Sun, Apr, 21, 2019 06:12:22: PM'),
+(237, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 18:12:43', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 06:12:43: PM'),
+(238, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 18:12:50', 'Dwayne Johnson(thesupercashier) Logged Out on Sun, Apr, 21, 2019 06:12:50: PM'),
+(239, 37, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 18:13:05', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 06:13:05: PM'),
+(240, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 20:15:36', 'Olaoluwa David logged in as thecashier on Sun, Apr, 21, 2019 08:15:36: PM'),
+(241, 37, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 20:15:56', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 08:15:56: PM'),
+(242, 37, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 20:15:56', 'Dwayne Johnson(thesupercashier) Logged Out on Sun, Apr, 21, 2019 08:15:56: PM'),
+(243, 37, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 20:16:34', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 08:16:34: PM'),
+(244, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 20:45:53', 'Olaoluwa David(thecashier) Logged Out on Sun, Apr, 21, 2019 08:45:53: PM'),
+(245, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 20:46:10', 'Olaoluwa David logged in as thecashier on Sun, Apr, 21, 2019 08:46:10: PM'),
+(246, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 20:46:10', 'Olaoluwa David(thecashier) Logged Out on Sun, Apr, 21, 2019 08:46:10: PM'),
+(247, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 20:47:15', 'Olaoluwa David logged in as thecashier on Sun, Apr, 21, 2019 08:47:15: PM'),
+(248, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 20:47:29', 'Olaoluwa David(thecashier) Logged Out on Sun, Apr, 21, 2019 08:47:29: PM'),
+(249, 38, '8jeugj30i27bpi2eef3u866u20', '2019-04-21 21:03:33', 'Olaoluwa David logged in as thecashier on Sun, Apr, 21, 2019 09:03:33: PM'),
+(250, 37, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 21:10:42', 'Dwayne Johnson(thesupercashier) Logged Out on Sun, Apr, 21, 2019 09:10:42: PM'),
+(251, 37, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 21:10:54', 'Dwayne Johnson logged in as thesupercashier on Sun, Apr, 21, 2019 09:10:54: PM'),
+(252, 38, 'udao11qqnhf6bo8ab4aed97eok', '2019-04-21 21:16:52', 'Olaoluwa David logged in as thecashier on Sun, Apr, 21, 2019 09:16:52: PM'),
+(253, 38, 'udao11qqnhf6bo8ab4aed97eok', '2019-04-21 21:44:41', 'Olaoluwa David(thecashier) Logged Out on Sun, Apr, 21, 2019 09:44:41: PM'),
+(254, 37, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-21 21:45:19', 'Dwayne Johnson(thesupercashier) Logged Out on Sun, Apr, 21, 2019 09:45:19: PM'),
+(255, 38, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-22 08:14:58', 'Olaoluwa David logged in as thecashier on Mon, Apr, 22, 2019 08:14:58: AM'),
+(256, 37, 'nsngo6mt0avg2bhkcm7bchlge7', '2019-04-22 08:21:18', 'Dwayne Johnson logged in as thesupercashier on Mon, Apr, 22, 2019 08:21:18: AM'),
+(257, 38, '7omsfkkaukgkivbt1asgmnm53s', '2019-04-22 08:35:54', 'Olaoluwa David(thecashier) Logged Out on Mon, Apr, 22, 2019 08:35:54: AM'),
+(258, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:16:16', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 09:16:16: AM'),
+(259, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:30:32', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 09:30:32: AM'),
+(260, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:32:16', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 09:32:16: AM'),
+(261, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:36:47', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 09:36:47: AM'),
+(262, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:36:49', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 09:36:49: AM'),
+(263, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:36:54', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 09:36:54: AM'),
+(264, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:46:08', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 09:46:08: AM'),
+(265, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:54:50', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 09:54:50: AM'),
+(266, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 09:54:53', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 09:54:53: AM'),
+(267, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:29:02', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 12:29:02: PM'),
+(268, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:32:10', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 12:32:10: PM'),
+(269, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:32:56', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 12:32:56: PM'),
+(270, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:33:01', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 12:33:01: PM'),
+(271, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:33:02', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 12:33:02: PM'),
+(272, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:33:29', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 12:33:29: PM'),
+(273, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:58:31', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 12:58:31: PM'),
+(274, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:58:37', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 12:58:37: PM'),
+(275, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 12:59:45', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 12:59:45: PM'),
+(276, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 13:00:11', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 01:00:11: PM'),
+(277, 37, 'q7aknomluo0gavp4se79ospqh3', '2019-05-09 13:29:11', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 01:29:11: PM'),
+(278, 37, 't481plfh5n4an9p0s768vcf9s8', '2019-05-09 13:30:01', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 01:30:01: PM'),
+(279, 37, 't481plfh5n4an9p0s768vcf9s8', '2019-05-09 13:30:13', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 01:30:13: PM'),
+(280, 37, 't481plfh5n4an9p0s768vcf9s8', '2019-05-09 13:30:35', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 01:30:35: PM'),
+(281, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 13:52:19', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 01:52:19: PM'),
+(282, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 13:52:22', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 01:52:22: PM'),
+(283, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 14:42:57', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 02:42:57: PM'),
+(284, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 14:43:01', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 02:43:01: PM'),
+(285, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 14:56:39', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 02:56:39: PM'),
+(286, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 14:56:48', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 02:56:48: PM'),
+(287, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 15:03:49', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 03:03:49: PM'),
+(288, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 15:03:51', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 03:03:51: PM'),
+(289, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 15:05:19', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 03:05:19: PM'),
+(290, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 15:06:09', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 03:06:09: PM'),
+(291, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 15:36:52', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 03:36:52: PM'),
+(292, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 15:36:55', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 03:36:55: PM'),
+(293, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 16:30:26', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 04:30:26: PM'),
+(294, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 16:30:28', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 04:30:28: PM'),
+(295, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 16:33:14', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 04:33:14: PM'),
+(296, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 16:33:16', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 04:33:16: PM'),
+(297, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 16:50:41', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 04:50:41: PM'),
+(298, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 16:50:43', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 04:50:43: PM'),
+(299, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:16:52', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 05:16:52: PM'),
+(300, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:16:54', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 05:16:54: PM'),
+(301, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:26:23', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 05:26:23: PM'),
+(302, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:26:25', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 05:26:25: PM'),
+(303, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:29:38', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 05:29:38: PM'),
+(304, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:29:39', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 05:29:39: PM'),
+(305, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:54:56', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 05:54:56: PM'),
+(306, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:54:58', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 05:54:58: PM'),
+(307, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:55:08', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 05:55:08: PM'),
+(308, 38, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:55:21', 'Olaoluwa David logged in as thecashier on Thu, May, 09, 2019 05:55:21: PM'),
+(309, 38, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:57:20', 'Olaoluwa David(thecashier) Logged Out on Thu, May, 09, 2019 05:57:20: PM'),
+(310, 38, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:57:24', 'Olaoluwa David logged in as thecashier on Thu, May, 09, 2019 05:57:24: PM'),
+(311, 38, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:58:20', 'Olaoluwa David(thecashier) Logged Out on Thu, May, 09, 2019 05:58:20: PM'),
+(312, 38, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:58:25', 'Olaoluwa David logged in as thecashier on Thu, May, 09, 2019 05:58:25: PM'),
+(313, 38, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:59:04', 'Olaoluwa David(thecashier) Logged Out on Thu, May, 09, 2019 05:59:04: PM'),
+(314, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 17:59:17', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 05:59:17: PM'),
+(315, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 18:01:44', 'Dwayne Johnson(thesupercashier) Logged Out on Thu, May, 09, 2019 06:01:44: PM'),
+(316, 37, 's1mucqumhdlsc8v4h91r1fcs79', '2019-05-09 18:01:46', 'Dwayne Johnson logged in as thesupercashier on Thu, May, 09, 2019 06:01:46: PM'),
+(317, 37, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 14:13:59', 'Dwayne Johnson logged in as thesupercashier on Wed, May, 22, 2019 02:13:59: PM'),
+(318, 37, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 14:14:35', 'Dwayne Johnson(thesupercashier) Logged Out on Wed, May, 22, 2019 02:14:35: PM'),
+(319, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 14:14:47', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 02:14:47: PM'),
+(320, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 14:16:05', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 02:16:05: PM'),
+(321, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 14:16:08', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 02:16:08: PM'),
+(322, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:09:53', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 03:09:53: PM'),
+(323, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:09:56', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 03:09:56: PM'),
+(324, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:10:22', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 03:10:22: PM'),
+(325, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:16:46', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 03:16:46: PM'),
+(326, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:55:01', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 03:55:01: PM'),
+(327, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:55:03', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 03:55:03: PM'),
+(328, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:59:48', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 03:59:48: PM'),
+(329, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 15:59:49', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 03:59:49: PM'),
+(330, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:00:41', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:00:41: PM'),
+(331, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:00:44', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 04:00:44: PM'),
+(332, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:02:25', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:02:25: PM'),
+(333, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:02:28', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 04:02:28: PM'),
+(334, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:07:33', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:07:33: PM'),
+(335, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:07:35', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 04:07:35: PM'),
+(336, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:09:26', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:09:26: PM'),
+(337, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:09:28', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 04:09:28: PM'),
+(338, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:10:11', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:10:11: PM'),
+(339, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:15:33', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 04:15:33: PM'),
+(340, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:16:39', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:16:39: PM'),
+(341, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:16:41', 'Olaoluwa David logged in as thecashier on Wed, May, 22, 2019 04:16:41: PM'),
+(342, 38, '3jfm8dsh1nk1b97lmuo7q19sjj', '2019-05-22 16:19:47', 'Olaoluwa David(thecashier) Logged Out on Wed, May, 22, 2019 04:19:47: PM'),
+(343, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 18:23:40', 'Dave Michael logged in as thecashier on Wed, May, 22, 2019 06:23:40: PM'),
+(344, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:22:10', 'Dave Michael(thecashier) Logged Out on Wed, May, 22, 2019 09:22:10: PM'),
+(345, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:22:13', 'Dave Michael logged in as thecashier on Wed, May, 22, 2019 09:22:13: PM'),
+(346, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:24:44', 'Dave Michael(thecashier) Logged Out on Wed, May, 22, 2019 09:24:44: PM'),
+(347, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:24:45', 'Dave Michael logged in as thecashier on Wed, May, 22, 2019 09:24:45: PM'),
+(348, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:25:55', 'Dave Michael(thecashier) Logged Out on Wed, May, 22, 2019 09:25:55: PM'),
+(349, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:25:58', 'Dave Michael logged in as thecashier on Wed, May, 22, 2019 09:25:58: PM'),
+(350, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:27:06', 'Dave Michael(thecashier) Logged Out on Wed, May, 22, 2019 09:27:06: PM'),
+(351, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 21:27:08', 'Dave Michael logged in as thecashier on Wed, May, 22, 2019 09:27:08: PM'),
+(352, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 23:11:30', 'Dave Michael(thecashier) Logged Out on Wed, May, 22, 2019 11:11:30: PM'),
+(353, 38, 'db4boctu4a50mc3n43a7k9jkbp', '2019-05-22 23:11:32', 'Dave Michael logged in as thecashier on Wed, May, 22, 2019 11:11:32: PM'),
+(354, 38, 'tjgask2ti2m2t4qkck9mi3k0p1', '2019-05-23 08:04:43', 'Dave Michael logged in as thecashier on Thu, May, 23, 2019 08:04:43: AM'),
+(355, 38, 'tjgask2ti2m2t4qkck9mi3k0p1', '2019-05-23 10:18:12', 'Dave Michael(thecashier) Logged Out on Thu, May, 23, 2019 10:18:12: AM'),
+(356, 38, 'tjgask2ti2m2t4qkck9mi3k0p1', '2019-05-23 10:18:22', 'Dave Michael logged in as thecashier on Thu, May, 23, 2019 10:18:22: AM'),
+(357, 38, 'tjgask2ti2m2t4qkck9mi3k0p1', '2019-05-23 10:19:06', 'Dave Michael(thecashier) Logged Out on Thu, May, 23, 2019 10:19:06: AM'),
+(358, 38, 'vd67nbjiqls4uqao855je48b9p', '2019-05-23 18:04:11', 'Dave Michael logged in as thecashier on Thu, May, 23, 2019 06:04:11: PM'),
+(359, 38, 'vd67nbjiqls4uqao855je48b9p', '2019-05-23 18:04:15', 'Dave Michael logged in as thecashier on Thu, May, 23, 2019 06:04:15: PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cashiers_login_tokens`
+--
+
+DROP TABLE IF EXISTS `cashiers_login_tokens`;
+CREATE TABLE IF NOT EXISTS `cashiers_login_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(5) NOT NULL,
+  `date_created_raw` bigint(20) NOT NULL,
+  `date_created_pretty` timestamp NOT NULL,
+  `created_for` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cashiers_login_tokens`
+--
+
+INSERT INTO `cashiers_login_tokens` (`id`, `token`, `date_created_raw`, `date_created_pretty`, `created_for`) VALUES
+(1, '21241', 1558534448, '2019-05-22 13:14:08', 'thesupercashier'),
+(2, '98117', 1558599990, '2019-05-23 07:26:30', 'thecashier');
 
 -- --------------------------------------------------------
 
@@ -158,102 +384,37 @@ CREATE TABLE IF NOT EXISTS `denominationanalysis` (
   `Dem10` int(11) DEFAULT NULL,
   `Dem5` int(11) DEFAULT NULL,
   `TransactionCardNumber` varchar(4) DEFAULT NULL,
-  `recusername` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `ReversalStatus` char(1) DEFAULT '0',
-  `date_received` datetime DEFAULT NULL,
+  `PostedBy` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Date_Received` datetime DEFAULT NULL,
   PRIMARY KEY (`TranID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `denominationanalysis`
 --
 
-INSERT INTO `denominationanalysis` (`TranID`, `InvoiceNum`, `Dem1000`, `Dem500`, `Dem200`, `Dem100`, `Dem50`, `Dem20`, `Dem10`, `Dem5`, `TransactionCardNumber`, `recusername`, `ReversalStatus`, `date_received`) VALUES
-(1, '0000151', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(2, '0000152', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(3, '0000153', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(4, '0000154', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(5, '0000155', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(6, '0000156', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(7, '0000156', 24, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(8, '0000156', 24, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(9, '0000156', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(10, '0000156', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(11, '0000156', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(12, '0000156', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(13, '0000156', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(14, '0000156', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(15, '0000157', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(16, '0000158', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(17, '0000159', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(18, '0000160', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(21, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(23, '0000451', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(24, '0000161', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(25, '0000162', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(26, '0000163', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2', NULL),
-(27, NULL, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(28, '0000451', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(29, '0000300', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(30, '0000151', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(31, '0000152', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(32, '0000153', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(33, '0000300', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(34, '0000451', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(35, '0000452', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(36, '0000453', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(37, '0000454', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(38, '0000455', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(39, '0000456', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(40, '0000457', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(41, '0000458', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(42, '0000459', 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(43, '0000460', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(44, '0000461', 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(45, '0000462', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2', NULL),
-(46, '0000474', 10, 1, 0, 1, 5, 5, 5, 5, '', 'superadmin', '0', '2019-04-14 15:07:09'),
-(47, '1781751', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', 'superadmin', '0', '2019-04-14 15:22:49');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `denominationanalysis_reversed_tmp`
---
-
-DROP TABLE IF EXISTS `denominationanalysis_reversed_tmp`;
-CREATE TABLE IF NOT EXISTS `denominationanalysis_reversed_tmp` (
-  `TranID` int(11) NOT NULL AUTO_INCREMENT,
-  `InvoiceNum` varchar(11) DEFAULT NULL,
-  `reversedreceiptnumber` varchar(50) DEFAULT NULL,
-  `Dem1000` int(11) DEFAULT NULL,
-  `Dem500` int(11) DEFAULT NULL,
-  `Dem200` int(11) DEFAULT NULL,
-  `Dem100` int(11) DEFAULT NULL,
-  `Dem50` int(11) DEFAULT NULL,
-  `Dem20` int(11) DEFAULT NULL,
-  `Dem10` int(11) DEFAULT NULL,
-  `Dem5` int(11) DEFAULT NULL,
-  `TransactionCardNumber` varchar(4) DEFAULT NULL,
-  `recusername` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Date_Received` datetime DEFAULT NULL,
-  PRIMARY KEY (`TranID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `denominationanalysis_reversed_tmp`
---
-
-INSERT INTO `denominationanalysis_reversed_tmp` (`TranID`, `InvoiceNum`, `reversedreceiptnumber`, `Dem1000`, `Dem500`, `Dem200`, `Dem100`, `Dem50`, `Dem20`, `Dem10`, `Dem5`, `TransactionCardNumber`, `recusername`, `Date_Received`) VALUES
-(1, '1781752', '0000153', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-03 12:16:49'),
-(2, '1781752', '0000153', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-03 12:19:55'),
-(3, '1781752', '0000153', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-03 12:20:51'),
-(4, '1781752', '0000152', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-12 11:37:05'),
-(5, '1781752', '0000155', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2019-04-12 12:34:22'),
-(8, '1781752', '0000159', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-12 14:14:34'),
-(10, '1781752', '1781751', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', 'superadmin', '2019-04-14 15:35:12');
+INSERT INTO `denominationanalysis` (`TranID`, `InvoiceNum`, `Dem1000`, `Dem500`, `Dem200`, `Dem100`, `Dem50`, `Dem20`, `Dem10`, `Dem5`, `TransactionCardNumber`, `PostedBy`, `Date_Received`) VALUES
+(1, '0000151', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-03-12 12:34:01'),
+(2, '0000152', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2019-03-12 12:34:47'),
+(3, '0000153', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-03-19 10:58:25'),
+(4, '0000154', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1338', 'superadmin', '2019-03-19 20:06:44'),
+(5, '0000157', 200, 20, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 10:39:59'),
+(6, '0000158', 50, 200, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 11:04:41'),
+(7, '0000159', 20, 50, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:08:52'),
+(8, '0000160', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:10:22'),
+(9, '0000161', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:13:57'),
+(10, '0000162', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:16:19'),
+(11, '0000163', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:16:57'),
+(12, '0000164', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:18:10'),
+(13, '0000165', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:18:20'),
+(14, '0000166', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:18:44'),
+(15, '0000167', 1000, 2000, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:37:56'),
+(16, '0000168', 1000, 2000, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 12:39:10'),
+(17, '0000169', 50, 20, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 15:04:44'),
+(18, '0000170', 10, 4, NULL, NULL, NULL, NULL, NULL, NULL, '', 'superadmin', '2019-04-15 15:10:44'),
+(19, NULL, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'Dravlink', '2019-04-15 15:14:24'),
+(20, '0000301', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'Dravlink', '2019-04-15 15:43:06'),
+(21, '0000302', 10, 20, NULL, NULL, NULL, NULL, NULL, NULL, '', 'Dravlink', '2019-04-15 15:49:50');
 
 -- --------------------------------------------------------
 
@@ -277,23 +438,20 @@ CREATE TABLE IF NOT EXISTS `members` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_name` varchar(25) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `members`
 --
 
 INSERT INTO `members` (`id`, `f_name`, `l_name`, `gender`, `address`, `city`, `state`, `phone`, `email`, `date_of_birth`, `created_at`, `updated_at`, `user_name`) VALUES
-(18, 'Adesola', 'Olusola', 'male', 'Padmavati', 'Ikeja', 'Lagos', '34343432', 'adesola@gmail.com', '1991-06-18', NULL, NULL, ''),
-(19, 'Janet', 'atre', 'male', 'Priyadarshini A102, adwa2', 'wad', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '1998-05-18', NULL, NULL, ''),
+(18, 'Adesola', 'Olusola', 'female', 'Padmavati', 'Ikeja', 'Lagos', '34343432', 'adesola@gmail.com', '1991-06-18', NULL, '2019-04-15 07:33:22', ''),
 (21, 'baruwa', 'Isola', 'male', 'Priyadarshini A102, adwa2', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '2016-11-24', NULL, NULL, ''),
 (23, 'Adebisi', ' Bisi', 'male', 'Priyadarshini A102, adwa2', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '1992-02-04', NULL, NULL, ''),
 (24, 'Olusola', ' Mendel', 'male', 'Priyadarshini A102, adwa2', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '2016-11-30', NULL, NULL, ''),
 (25, 'John', 'Israel', 'male', 'City, view', '', 'Maharashtra', '8875207658', 'john@abc.com', '2017-01-27', NULL, NULL, ''),
 (26, 'Maria', 'Anderson', 'female', 'New york city', '', 'Maharashtra', '8856705387', 'chetanshenai9@gmail.com', '2017-01-28', NULL, NULL, ''),
-(27, 'Ana', ' Trujillo', 'female', 'Street view', '', 'Maharashtra', '9975658478', 'chetanshenai9@gmail.com', '1992-07-16', NULL, NULL, ''),
 (28, 'Thomas', 'Hardy', 'male', '120 Hanover Sq', '', 'Maharashtra', '885115323', 'abc@abc.com', '1985-06-24', NULL, NULL, ''),
-(29, 'Christina', 'Berlin', 'female', 'Berguvsvägen 8', '', 'Maharashtra', '9985125366', 'chetanshenai9@gmail.com', '1997-02-12', NULL, NULL, ''),
 (30, 'Ann', 'Devon', 'male', '35 King George', '', 'Maharashtra', '8865356988', 'abc@abc.com', '1988-02-09', NULL, NULL, ''),
 (31, 'Helen', 'Bennett', 'female', 'Garden House Crowther Way', '', 'Maharashtra', '75207654', 'chetanshenai9@gmail.com', '1983-06-15', NULL, NULL, ''),
 (32, 'Annette', 'Roulet', 'female', '1 rue Alsace-Lorraine', '', ' ', '3410005687', 'abc@abc.com', '1992-01-13', NULL, NULL, ''),
@@ -305,13 +463,9 @@ INSERT INTO `members` (`id`, `f_name`, `l_name`, `gender`, `address`, `city`, `s
 (38, 'Palle', 'Ibsen', 'female', 'Smagsløget 45', '', 'Maharashtra', '9975245588', 'Palle@gmail.com', '1991-06-17', NULL, '2018-01-14 16:11:42', ''),
 (39, 'Paula', 'Amusa', 'male', 'Rua do Mercado, 12', '', 'Maharashtra', '659984878', 'abc@gmail.com', '1996-02-06', NULL, NULL, ''),
 (40, 'Matti', ' Karttunen', 'female', 'Keskuskatu 45', '', 'Maharashtra', '845555125', 'abc@abc.com', '1984-06-19', NULL, NULL, ''),
-(47, 'Christiana ', 'Doe', 'male', 'afa', NULL, 'Maharashtra', '9934678658', 'chetanshenai9@gmail.com', NULL, '2018-11-17 17:26:16', NULL, ''),
-(48, 'Selewa ', 'Sowore', 'male', NULL, NULL, ' ', NULL, NULL, NULL, '2018-11-18 05:51:27', NULL, ''),
 (49, 'Olatunji', 'Shoyemi', 'male', 'Lagos\r\nLagos', NULL, 'Lagos', '8132628062', 'tunjiup@gmail.com', '2019-01-04', '2019-01-02 10:58:17', NULL, ''),
-(50, 'Jos', 'Gadges', 'male', 'Lagos\r\nLagos', NULL, 'Lagos', '8082004888', 'josgadgets@gmail.com', '2018-12-05', '2019-01-02 11:02:37', NULL, ''),
 (51, 'TUNJI3', 'SHOYEMI', 'male', 'Lagos', NULL, 'Lagos', '8023787198', 'tunjiup@gmail.com', '2018-12-05', '2019-01-02 11:12:26', '2019-01-02 11:13:46', ''),
-(52, 'Sola', 'Israel', 'male', 'Lagos', NULL, 'Lagos', '8132628062', 'sola@sola.com', '2019-01-03', '2019-01-02 11:55:21', '2019-03-07 20:52:55', ''),
-(53, 'Badmus', 'Ogunlade', 'male', '12, MAWAMIWALE STREET, OFF KILOMAKIRI AVENUE, AJALEKOKO, LAGOS', NULL, 'Lagos', '08121479647', 'arigbabudollar@yahoo.com', '2019-04-16', '2019-04-14 14:00:22', NULL, '');
+(52, 'Sola', 'Israel', 'male', 'Lagos', NULL, 'Lagos', '8132628062', 'sola@sola.com', '2019-01-03', '2019-01-02 11:55:21', '2019-04-15 07:32:46', '');
 
 -- --------------------------------------------------------
 
@@ -375,31 +529,6 @@ INSERT INTO `members_old` (`id`, `f_name`, `l_name`, `gender`, `address`, `city`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `printer_assign`
---
-
-DROP TABLE IF EXISTS `printer_assign`;
-CREATE TABLE IF NOT EXISTS `printer_assign` (
-  `PrinterID` int(11) NOT NULL AUTO_INCREMENT,
-  `PrinterName` varchar(255) DEFAULT NULL,
-  `PrinterModel` varchar(255) DEFAULT NULL,
-  `AssignedTo` varchar(255) DEFAULT NULL,
-  `AssignedBy` varchar(255) DEFAULT NULL,
-  `AssignedDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`PrinterID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `printer_assign`
---
-
-INSERT INTO `printer_assign` (`PrinterID`, `PrinterName`, `PrinterModel`, `AssignedTo`, `AssignedBy`, `AssignedDate`) VALUES
-(1, 'SAM4S ELLIX40', 'SAM4S', 'superadmin', 'superadmin', '2019-03-25 14:45:34'),
-(2, 'XP-80C', 'Xprinter', 'superadminer', 'superadmin', '2019-03-25 14:46:01');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `receiptnumberpool`
 --
 
@@ -411,73 +540,32 @@ CREATE TABLE IF NOT EXISTS `receiptnumberpool` (
   `CashierAssigned` varchar(255) DEFAULT NULL,
   `AssignedBy` varchar(255) DEFAULT NULL,
   `AssignedDate` datetime DEFAULT NULL,
-  `UsedReceiptNumber` int(11) DEFAULT '0',
-  `UsuageStatus` char(1) DEFAULT '0',
-  `UsuageStatusUpdatedDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`ReceiptID`) USING BTREE,
-  UNIQUE KEY `receiptnumbers` (`ReceiptNumber`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  `UsedReceiptNumber` int(11) DEFAULT NULL,
+  `UsuageStatus` char(1) DEFAULT '1',
+  PRIMARY KEY (`ReceiptID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `receiptnumberpool`
 --
 
-INSERT INTO `receiptnumberpool` (`ReceiptID`, `ReceiptNumber`, `ReceiptNumberRange`, `CashierAssigned`, `AssignedBy`, `AssignedDate`, `UsedReceiptNumber`, `UsuageStatus`, `UsuageStatusUpdatedDate`) VALUES
-(1, '0000001', 150, 'superadmin', 'superadmin', '2019-03-11 11:43:15', 150, '2', '2019-03-22 22:04:55'),
-(2, '0000151', 150, 'superadmin', 'superadmin', '2019-03-12 11:40:50', 150, '2', '2019-03-23 20:35:31'),
-(5, '0000300', 150, 'root', 'superadmin', '2019-03-22 14:36:13', 0, '0', '2019-03-22 22:04:55'),
-(6, '0000451', 150, 'superadmin', 'superadmin', '2019-03-22 14:36:58', 150, '2', '2019-03-23 20:35:32'),
-(11, '0000500', 150, 'admin', 'superadmin', '2019-03-22 17:40:19', 0, '0', '2019-03-22 22:04:55'),
-(12, '0000651', 150, 'admin', 'superadmin', '2019-03-23 20:42:11', 0, '0', NULL),
-(13, '1781751', 150, 'superadmin', 'superadmin', '2019-04-14 15:18:28', 2, '1', NULL);
-
--- --------------------------------------------------------
+INSERT INTO `receiptnumberpool` (`ReceiptID`, `ReceiptNumber`, `ReceiptNumberRange`, `CashierAssigned`, `AssignedBy`, `AssignedDate`, `UsedReceiptNumber`, `UsuageStatus`) VALUES
+(1, '0000001', 150, 'superadmin', 'superadmin', '2019-03-11 11:43:15', 150, '0'),
+(2, '0000151', 150, 'superadmin', 'superadmin', '2019-03-12 11:40:50', 20, '1'),
+(3, '0000301', 150, 'thecashier', 'superadmin', '2019-04-15 15:40:50', 2, '1');
 
 --
--- Table structure for table `receipt_log`
+-- Triggers `receiptnumberpool`
 --
-
-DROP TABLE IF EXISTS `receipt_log`;
-CREATE TABLE IF NOT EXISTS `receipt_log` (
-  `LogID` int(11) NOT NULL AUTO_INCREMENT,
-  `ReceiptNumber` varchar(20) DEFAULT NULL,
-  `UsuageStatus` char(1) DEFAULT '0',
-  `UsuageStatusUpdatedDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`LogID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `receipt_log`
---
-
-INSERT INTO `receipt_log` (`LogID`, `ReceiptNumber`, `UsuageStatus`, `UsuageStatusUpdatedDate`) VALUES
-(1, '0000500', '0', NULL),
-(2, '0000001', '0', NULL),
-(3, '0000151', '0', NULL),
-(4, '0000300', '0', NULL),
-(5, '0000451', '0', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reversal_options`
---
-
-DROP TABLE IF EXISTS `reversal_options`;
-CREATE TABLE IF NOT EXISTS `reversal_options` (
-  `OptionID` int(11) NOT NULL AUTO_INCREMENT,
-  `OptionName` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`OptionID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `reversal_options`
---
-
-INSERT INTO `reversal_options` (`OptionID`, `OptionName`) VALUES
-(1, 'Wrong Amount'),
-(2, 'Wrong Payee Details'),
-(3, 'Wrong Period Selection');
+DROP TRIGGER IF EXISTS `update_receipt`;
+DELIMITER $$
+CREATE TRIGGER `update_receipt` BEFORE UPDATE ON `receiptnumberpool` FOR EACH ROW BEGIN
+IF NEW.UsedReceiptNumber IS NOT NULL AND NEW.UsedReceiptNumber = 150 THEN
+SET NEW.UsuageStatus = 0;
+END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -487,58 +575,6 @@ INSERT INTO `reversal_options` (`OptionID`, `OptionName`) VALUES
 
 DROP TABLE IF EXISTS `reversedtransactions`;
 CREATE TABLE IF NOT EXISTS `reversedtransactions` (
-  `Trans_ref` int(255) NOT NULL AUTO_INCREMENT,
-  `trans_id` varchar(50) NOT NULL,
-  `invoicenum` varchar(50) DEFAULT NULL,
-  `reversedreceiptnumber` varchar(50) DEFAULT NULL,
-  `memid` varchar(50) DEFAULT NULL,
-  `Name_member` varchar(50) DEFAULT NULL,
-  `sex` varchar(10) DEFAULT NULL,
-  `branch_name` varchar(50) DEFAULT NULL,
-  `band_name` varchar(100) DEFAULT NULL,
-  `Amount_Paid` decimal(18,2) DEFAULT NULL,
-  `Payment_Type` varchar(255) DEFAULT NULL,
-  `payment_description` text,
-  `payment_mode` varchar(25) DEFAULT NULL,
-  `date_received` datetime DEFAULT NULL,
-  `reversal_status` char(1) DEFAULT '0',
-  `recusername` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Trans_ref`,`trans_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `reversedtransactions`
---
-
-INSERT INTO `reversedtransactions` (`Trans_ref`, `trans_id`, `invoicenum`, `reversedreceiptnumber`, `memid`, `Name_member`, `sex`, `branch_name`, `band_name`, `Amount_Paid`, `Payment_Type`, `payment_description`, `payment_mode`, `date_received`, `reversal_status`, `recusername`) VALUES
-(12, 'TRN6882894', '0000153', '1781752', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '-50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-22 22:08:37', '2', 'superadmin'),
-(34, 'TRN8484948', '0000152', '1781752', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-04-12 10:37:06', '2', 'superadmin'),
-(35, 'TRN3921003', '0000155', '1781752', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-1200000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-04-12 11:34:22', '2', 'superadmin'),
-(38, 'TRN6705492', '0000159', '1781752', '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '-40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-04-12 13:14:35', '2', 'superadmin'),
-(40, 'TRN9668170', '1781751', '1781752', '001800', 'EGUNJOBI EMMANUEL OJO', NULL, 'HQ', 'ANDREW', '-50000.00', 'Tithe', 'Tithe for April 2019', 'Card', '2019-04-14 14:35:13', '2', 'superadmin');
-
---
--- Triggers `reversedtransactions`
---
-DROP TRIGGER IF EXISTS `mv_neg_trans`;
-DELIMITER $$
-CREATE TRIGGER `mv_neg_trans` BEFORE UPDATE ON `reversedtransactions` FOR EACH ROW BEGIN
-IF NEW.reversal_status ='2' THEN
-			INSERT INTO `tb_payment` (trans_id,invoicenum,reversedreceiptnumber,memid,Name_member,sex,branch_name,band_name,Amount_Paid,Payment_Type,payment_description,payment_mode,date_received,reversal_status,recusername) 
-		 VALUES(NEW.trans_id,NEW.invoicenum,NEW.reversedreceiptnumber,NEW.memid,NEW.Name_member,NEW.sex,NEW.branch_name,NEW.band_name,NEW.Amount_Paid,NEW.Payment_Type,NEW.payment_description,NEW.payment_mode,NOW(),NEW.reversal_status,NEW.recusername);
-		 END IF;
-END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reversedtransactions12`
---
-
-DROP TABLE IF EXISTS `reversedtransactions12`;
-CREATE TABLE IF NOT EXISTS `reversedtransactions12` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `TransID` varchar(20) DEFAULT NULL,
   `InvoiceNum` varchar(20) DEFAULT NULL,
@@ -547,17 +583,19 @@ CREATE TABLE IF NOT EXISTS `reversedtransactions12` (
   `DateCreated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `unique_fields` (`TransID`,`InvoiceNum`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
--- Dumping data for table `reversedtransactions12`
+-- Dumping data for table `reversedtransactions`
 --
 
-INSERT INTO `reversedtransactions12` (`id`, `TransID`, `InvoiceNum`, `Amount`, `Createdby`, `DateCreated`) VALUES
+INSERT INTO `reversedtransactions` (`id`, `TransID`, `InvoiceNum`, `Amount`, `Createdby`, `DateCreated`) VALUES
 (1, 'TRN8484948', '0000152', '12000.00', 'superadmin', '2019-03-15 13:08:49'),
 (3, 'TRN8884729', '0000151', '10000.00', 'superadmin', '2019-03-15 13:10:42'),
-(6, 'TRN3921003', '0000155', '1200000.00', 'superadmin', '2019-03-29 12:49:26'),
-(7, 'TRN6882894', '0000153', '50000.00', 'superadmin', '2019-04-03 09:54:06');
+(4, 'TRN5446467', '0000167', '2000000.00', 'superadmin', '2019-04-15 13:41:58'),
+(14, 'TRN9456854', '0000169', '60000.00', 'superadmin', '2019-04-15 16:06:21'),
+(15, 'TRN4762432', '0000170', '12000.00', 'superadmin', '2019-04-15 16:12:53'),
+(16, 'TRN7478625', '0000302', '20000.00', 'Dravlink', '2019-04-15 16:50:59');
 
 -- --------------------------------------------------------
 
@@ -575,7 +613,17 @@ CREATE TABLE IF NOT EXISTS `start_and_end_day_controller` (
   `time_day_ended` varchar(50) DEFAULT 'NULL',
   `endorsed_by` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `start_and_end_day_controller`
+--
+
+INSERT INTO `start_and_end_day_controller` (`id`, `day`, `day_started`, `time_day_started`, `day_ended`, `time_day_ended`, `endorsed_by`) VALUES
+(5, '2019-04-21', 1, '2019-04-21 21:36:52', 'NOT YET', 'NULL', 'supercashr'),
+(6, '2019-04-22', 1, '2019-04-22 08:22:09', '1', '2019-04-22 08:26:52', 'supercashr'),
+(7, '2019-05-09', 1, '2019-05-09 09:16:50', 'NOT YET', 'NULL', 'supercashr'),
+(8, '2019-05-22', 1, '2019-05-22 14:14:27', '1', '2019-05-22 14:14:33', 'supercashr');
 
 -- --------------------------------------------------------
 
@@ -585,10 +633,8 @@ CREATE TABLE IF NOT EXISTS `start_and_end_day_controller` (
 
 DROP TABLE IF EXISTS `tb_payment`;
 CREATE TABLE IF NOT EXISTS `tb_payment` (
-  `Trans_ref` int(255) NOT NULL AUTO_INCREMENT,
   `trans_id` varchar(50) NOT NULL,
   `invoicenum` varchar(50) DEFAULT NULL,
-  `reversedreceiptnumber` varchar(50) DEFAULT NULL,
   `memid` varchar(50) DEFAULT NULL,
   `Name_member` varchar(50) DEFAULT NULL,
   `sex` varchar(10) DEFAULT NULL,
@@ -601,90 +647,37 @@ CREATE TABLE IF NOT EXISTS `tb_payment` (
   `date_received` datetime DEFAULT NULL,
   `reversal_status` char(1) DEFAULT '0',
   `recusername` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Trans_ref`,`trans_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`trans_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `tb_payment`
 --
 
-INSERT INTO `tb_payment` (`Trans_ref`, `trans_id`, `invoicenum`, `reversedreceiptnumber`, `memid`, `Name_member`, `sex`, `branch_name`, `band_name`, `Amount_Paid`, `Payment_Type`, `payment_description`, `payment_mode`, `date_received`, `reversal_status`, `recusername`) VALUES
-(1, 'TRN2025587', '0000452', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:39:11', '0', 'superadmin'),
-(2, 'TRN2065892', '0000154', NULL, '003805', 'OREBIYI OLUWOLE BABATUNDE', 'MALE', 'HQ', 'PETER', '120000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-03-19 20:06:44', '0', 'superadmin'),
-(3, 'TRN2379087', '0000456', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:39:45', '0', 'superadmin'),
-(4, 'TRN3242428', '0000161', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 17:06:19', '0', 'superadmin'),
-(5, 'TRN3921003', '0000155', '0000471', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '1200000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-03-22 14:39:59', '2', 'superadmin'),
-(6, 'TRN4591606', '0000451', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:36:46', '0', 'superadmin'),
-(7, 'TRN4936723', '0000453', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:39:34', '0', 'superadmin'),
-(8, 'TRN5403952', '0000459', NULL, '000130', 'AKINDELE HANNA WOSILA', 'FEMALE', 'HQ', 'SARAH', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019', 'Cash', '2019-03-25 14:58:52', '0', 'superadmin'),
-(9, 'TRN6705492', '0000159', '0000472', '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 15:42:26', '2', 'superadmin'),
-(10, 'TRN6764356', '0000300', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-22 22:04:55', '0', 'superadmin'),
-(11, 'TRN6811655', '0000460', NULL, '000170', 'AKINWUNMI QUEEN OLUSOLA', 'FEMALE', 'HQ', 'BLESSING', '10000.00', 'Tithe', 'Tithe for April 2019', 'Cash', '2019-03-25 15:02:41', '0', 'superadmin'),
-(13, 'TRN7067206', '0000162', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 17:07:05', '0', 'superadmin'),
-(15, 'TRN7312017', '0000156', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 15:38:41', '0', 'superadmin'),
-(16, 'TRN7734342', '0000462', NULL, '001437', 'ADEOYE ADEMOLA OLUWOLE', 'MALE', 'HQ', 'PAUL', '12000.00', 'Tithe', 'Tithe for April 2019', 'Cash', '2019-03-25 15:18:51', '0', 'superadmin'),
-(17, 'TRN8042244', '0000158', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 15:42:10', '0', 'superadmin'),
-(18, 'TRN8198955', '0000454', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:39:38', '0', 'superadmin'),
-(19, 'TRN8466683', '0000458', NULL, '001147', 'SHOYEMI MODUPE OLUWATOYIN', 'FEMALE', 'HQ', 'EUNICE', '12000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-24 11:39:26', '0', 'superadmin'),
-(20, 'TRN8484948', '0000152', '0000470', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-03-12 12:34:47', '2', 'superadmin'),
-(21, 'TRN8647466', '0000455', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:39:41', '0', 'superadmin'),
-(22, 'TRN8684344', '0000163', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 17:07:58', '0', 'superadmin'),
-(23, 'TRN8884729', '0000151', NULL, '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '10000.00', 'Tithe', 'Tithe for January 2019', 'Cash', '2019-03-12 12:34:01', '0', 'superadmin'),
-(24, 'TRN9015926', '0000457', NULL, '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-03-23 20:40:21', '0', 'superadmin'),
-(25, 'TRN9168672', '0000160', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 15:42:37', '0', 'superadmin'),
-(26, 'TRN9291001', '0000157', NULL, '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-03-22 15:41:52', '0', 'superadmin'),
-(27, 'TRN9450980', '0000461', NULL, '000178', 'AKINBIYI OLUWAFUNMILAYO MABEL', 'FEMALE', 'HQ', 'LIFE_IN_CHRIST', '30000.00', 'Tithe', 'Tithe for April 2019', 'Cash', '2019-03-25 15:13:38', '0', 'superadmin'),
-(29, 'TRN7168310', '0000464', '0000153', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '10000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-09 13:53:36', '0', 'superadmin'),
-(32, 'TRN6882894', '0000153', '0000469', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-09 20:12:48', '2', 'superadmin'),
-(35, 'TRN6882894', '0000153', '0000470', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '-50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 10:37:19', '2', 'superadmin'),
-(36, 'TRN8484948', '0000152', '0000470', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-04-12 10:37:19', '2', 'superadmin'),
-(37, 'TRN7168310', '0000464', '0000153', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '10000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 11:33:19', '0', 'superadmin'),
-(38, 'TRN6882894', '0000153', '0000471', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '-50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 11:34:37', '2', 'superadmin'),
-(39, 'TRN8484948', '0000152', '0000471', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-04-12 11:34:37', '2', 'superadmin'),
-(40, 'TRN3921003', '0000155', '0000471', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-1200000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-04-12 11:34:37', '2', 'superadmin'),
-(41, 'TRN6882894', '0000153', '0000472', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '-50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 13:16:55', '2', 'superadmin'),
-(42, 'TRN8484948', '0000152', '0000472', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-04-12 13:16:55', '2', 'superadmin'),
-(43, 'TRN3921003', '0000155', '0000472', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-1200000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-04-12 13:16:55', '2', 'superadmin'),
-(44, 'TRN6705492', '0000159', '0000472', '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '-40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-04-12 13:16:55', '2', 'superadmin'),
-(45, 'TRN3640439', '0000472', '0000159', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 13:16:56', '2', 'superadmin'),
-(46, 'TRN3721689', '0000472', '0000159', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 13:16:56', '2', 'superadmin'),
-(47, 'TRN2719114', '0000474', NULL, '003388', 'OLAIYANU ADEYEMI & CO', NULL, 'HQ', 'LOVE_DIVINE', '12025.00', 'Tithe', 'Tithe for April 2019', 'Cash', '2019-04-14 15:07:09', '0', 'superadmin'),
-(48, 'TRN9668170', '1781751', '1781752', '001800', 'EGUNJOBI EMMANUEL OJO', NULL, 'HQ', 'ANDREW', '50000.00', 'Tithe', 'Tithe for April 2019', 'Card', '2019-04-14 15:22:49', '2', 'superadmin'),
-(49, 'TRN6882894', '0000153', '1781752', '001115', 'AKINFENWA ADEKUNBI ADETOLA', 'FEMALE', 'HQ', 'EUNICE', '-50000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-14 14:37:12', '2', 'superadmin'),
-(50, 'TRN8484948', '0000152', '1781752', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-04-14 14:37:12', '2', 'superadmin'),
-(51, 'TRN3921003', '0000155', '1781752', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '-1200000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-04-14 14:37:12', '2', 'superadmin'),
-(52, 'TRN6705492', '0000159', '1781752', '001131', 'ADEKUNLE FOLAKE FAUSAT', 'FEMALE', 'HQ', 'EUNICE', '-40000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Card', '2019-04-14 14:37:12', '2', 'superadmin'),
-(53, 'TRN9668170', '1781751', '1781752', '001800', 'EGUNJOBI EMMANUEL OJO', NULL, 'HQ', 'ANDREW', '-50000.00', 'Tithe', 'Tithe for April 2019', 'Card', '2019-04-14 14:37:12', '2', 'superadmin'),
-(54, 'TRN3640439', '1781752', '0000159', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-14 14:37:12', '2', 'superadmin'),
-(55, 'TRN3721689', '1781752', '0000159', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-14 14:37:12', '2', 'superadmin'),
-(56, 'TRN7329235', '1781752', '0000160', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-14 14:37:12', '2', 'superadmin'),
-(57, 'TRN9614615', '1781752', '1781751', '001800', 'EGUNJOBI EMMANUEL OJO', NULL, 'HQ', 'ANDREW', '5000.00', 'Tithe', 'Tithe for April 2019', 'Card', '2019-04-14 14:37:12', '2', 'superadmin');
+INSERT INTO `tb_payment` (`trans_id`, `invoicenum`, `memid`, `Name_member`, `sex`, `branch_name`, `band_name`, `Amount_Paid`, `Payment_Type`, `payment_description`, `payment_mode`, `date_received`, `reversal_status`, `recusername`) VALUES
+('TRN2065892', '0000154', '003805', 'OREBIYI OLUWOLE BABATUNDE', 'MALE', 'HQ', 'PETER', '120000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019, April 2019, May 2019, June 2019, July 2019, August 2019, September 2019, October 2019, November 2019, December 2019', 'Card', '2019-03-19 20:06:44', '0', 'superadmin'),
+('TRN2210821', '0000155', '002001', 'AYORINDE A. ADENIKE', 'FEMALE', 'HQ', 'ESTHER', '70000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019', 'Cash', '2019-04-15 10:09:42', '0', 'superadmin'),
+('TRN3147103', '0000301', '000157', 'OBAFEMI OLUTAYO PATIENCE', 'MALE', 'HQ', 'SARAH', '20000.00', 'Tithe', 'Tithe for February 2019', 'Cash', '2019-04-15 15:43:06', '0', 'Dravlink'),
+('TRN4762432', '0000170', '001023', 'OGUNROMBI DAVID AYODEJI', 'MALE', 'HQ', 'LIGHT_OF_MORNING_STAR', '12000.00', 'Tithe', 'Tithe for March 2019', 'Cash', '2019-04-15 15:10:44', '1', 'superadmin'),
+('TRN4998209', '0000156', '002001', 'AYORINDE A. ADENIKE', 'FEMALE', 'HQ', 'ESTHER', '70000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019', 'Cash', '2019-04-15 10:37:50', '0', 'superadmin'),
+('TRN5856572', '0000157', '000110', 'OLABIYI AYANDIWURA FEYISARA', 'FEMALE', 'HQ', 'SARAH', '210000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019', 'Cash', '2019-04-15 10:39:59', '0', 'superadmin'),
+('TRN7329701', '0000153', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '6000.00', 'Tithe', 'Tithe for June 2019', 'Cash', '2019-03-19 10:58:25', '0', 'superadmin'),
+('TRN7427015', '0000158', '000280', 'OGUNTOLA FOLORUNSHO ABEKE', 'FEMALE', 'HQ', 'LIGHT_OF_CHRIST', '150000.00', 'Tithe', 'Tithe for January 2019, February 2019, March 2019', 'Cash', '2019-04-15 11:04:41', '0', 'superadmin'),
+('TRN7478625', '0000302', '000240', 'JOLAOSHO FLORENCE SIJOLA', 'FEMALE', 'HQ', 'MERCY', '20000.00', 'Tithe', 'Tithe for March 2019', 'Cash', '2019-04-15 15:49:50', '1', 'Dravlink'),
+('TRN8484948', '0000152', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '12000.00', 'Tithe', 'Tithe for February 2019', 'Card', '2019-03-12 12:34:47', '1', 'superadmin'),
+('TRN8884729', '0000151', '001509', 'SHOGADE ADESHINA OLANREWAJU', 'MALE', 'HQ', 'JUDAH', '10000.00', 'Tithe', 'Tithe for January 2019', 'Cash', '2019-03-12 12:34:01', '1', 'superadmin');
 
 --
 -- Triggers `tb_payment`
 --
-DROP TRIGGER IF EXISTS `delete_reversals`;
-DELIMITER $$
-CREATE TRIGGER `delete_reversals` AFTER UPDATE ON `tb_payment` FOR EACH ROW BEGIN
-IF NEW.reversal_status = 0 THEN
-DELETE FROM denominationanalysis_reversed_tmp WHERE reversedreceiptnumber = NEW.invoicenum;
-DELETE FROM reversedtransactions WHERE invoicenum = NEW.invoicenum;
-END IF;
-
-
-END
-$$
-DELIMITER ;
 DROP TRIGGER IF EXISTS `insert_reversals`;
 DELIMITER $$
 CREATE TRIGGER `insert_reversals` AFTER UPDATE ON `tb_payment` FOR EACH ROW BEGIN
 
  IF NEW.reversal_status = '1' THEN
-     INSERT INTO `reversedtransactions` (trans_id,invoicenum,reversedreceiptnumber,memid,Name_member,sex,branch_name,band_name,Amount_Paid,Payment_Type,payment_description,payment_mode,date_received,reversal_status,recusername) 
-		 VALUES(NEW.trans_id,NEW.invoicenum,NEW.reversedreceiptnumber,NEW.memid,NEW.Name_member,NEW.sex,NEW.branch_name,NEW.band_name,(-1*NEW.Amount_Paid),NEW.Payment_Type,NEW.payment_description,NEW.payment_mode,NOW(),NEW.reversal_status,NEW.recusername);
-		 
-  	
-	END IF;
+     INSERT INTO `reversedtransactions` (TransID,InvoiceNum,Amount,Createdby,DateCreated) 
+		 VALUES(NEW.trans_id,NEW.invoicenum,NEW.Amount_Paid,NEW.recusername,NOW());
+   END IF;
 
 
 
@@ -694,62 +687,8 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS `update_recs`;
 DELIMITER $$
 CREATE TRIGGER `update_recs` BEFORE INSERT ON `tb_payment` FOR EACH ROW BEGIN
-IF NEW.trans_id IS NOT NULL AND NEW.sex IS NOT NULL THEN
+IF NEW.trans_id IS NOT NULL THEN
 SET NEW.sex = (SELECT sex FROM tb_personinfo WHERE `memberid` = NEW.memid);
-END IF;
-END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_payment_reversed_tmp`
---
-
-DROP TABLE IF EXISTS `tb_payment_reversed_tmp`;
-CREATE TABLE IF NOT EXISTS `tb_payment_reversed_tmp` (
-  `trans_id` varchar(50) NOT NULL,
-  `invoicenum` varchar(50) DEFAULT NULL,
-  `reversedreceiptnumber` varchar(50) DEFAULT NULL,
-  `memid` varchar(50) DEFAULT NULL,
-  `Name_member` varchar(50) DEFAULT NULL,
-  `sex` varchar(10) DEFAULT NULL,
-  `branch_name` varchar(50) DEFAULT NULL,
-  `band_name` varchar(100) DEFAULT NULL,
-  `Amount_Paid` decimal(18,2) DEFAULT NULL,
-  `Payment_Type` varchar(255) DEFAULT NULL,
-  `payment_description` text,
-  `payment_mode` varchar(25) DEFAULT NULL,
-  `date_received` datetime DEFAULT NULL,
-  `reversal_purpose` varchar(255) DEFAULT NULL,
-  `reversal_status` char(1) DEFAULT '0',
-  `recusername` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`trans_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `tb_payment_reversed_tmp`
---
-
-INSERT INTO `tb_payment_reversed_tmp` (`trans_id`, `invoicenum`, `reversedreceiptnumber`, `memid`, `Name_member`, `sex`, `branch_name`, `band_name`, `Amount_Paid`, `Payment_Type`, `payment_description`, `payment_mode`, `date_received`, `reversal_purpose`, `reversal_status`, `recusername`) VALUES
-('TRN3640439', '1781752', '0000159', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 14:06:56', 'Wrong Amount', '2', 'superadmin'),
-('TRN3721689', '1781752', '0000159', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 14:14:35', 'Wrong Amount', '2', 'superadmin'),
-('TRN7329235', '1781752', '0000160', '001131', 'ADEKUNLE FOLAKE FAUSAT', NULL, 'HQ', 'EUNICE', '4000.00', 'Tithe', 'Tithe for March 2019, April 2019, May 2019, June 2019', 'Cash', '2019-04-12 14:17:30', 'Wrong Amount', '2', 'superadmin'),
-('TRN9614615', '1781752', '1781751', '001800', 'EGUNJOBI EMMANUEL OJO', NULL, 'HQ', 'ANDREW', '5000.00', 'Tithe', 'Tithe for April 2019', 'Card', '2019-04-14 15:35:12', 'Wrong Amount', '2', 'superadmin');
-
---
--- Triggers `tb_payment_reversed_tmp`
---
-DROP TRIGGER IF EXISTS `copy_to_tbpayment`;
-DELIMITER $$
-CREATE TRIGGER `copy_to_tbpayment` AFTER UPDATE ON `tb_payment_reversed_tmp` FOR EACH ROW BEGIN
-IF NEW.invoicenum IS NOT NULL THEN
-
-INSERT INTO `tb_payment` (trans_id,invoicenum,reversedreceiptnumber,memid,Name_member,sex,branch_name,band_name,Amount_Paid,Payment_Type,payment_description,payment_mode,date_received,reversal_status,recusername) 
-		 VALUES(NEW.trans_id,NEW.invoicenum,new.reversedreceiptnumber,NEW.memid,NEW.Name_member,NEW.sex,NEW.branch_name,NEW.band_name,NEW.Amount_Paid,NEW.Payment_Type,NEW.payment_description,NEW.payment_mode,NOW(),NEW.reversal_status,NEW.recusername);
-
-
 END IF;
 END
 $$
@@ -10105,184 +10044,6 @@ INSERT INTO `tb_personinfo_copy1` (`recid`, `memberid`, `memberno`, `surname`, `
 (4714, '004212', '004212', 'AJAYI', 'SAMUEL ADEYEMI', 'ALADURA', NULL, '1974-10-25 00:00:00', 'MALE', 'O+', 'MARRIED', 'MRS. TOPE', 4, 'Lagos', 'OLUSOSUN', 'Ikeja', 'Nigerian', '1, AKINLEYE STREET, OFF MADOJUTIMI ADALEMO, SANGO OTTA, OGUN STATE.', NULL, NULL, NULL, '08028758350', 'First Degree', 'None', 'Not Applicable', 'CIVIL SERVANT', NULL, NULL, 'CHURCH WARDENS', NULL, '', NULL, NULL, NULL),
 (4717, '004215', '004215', 'ASHORE', 'ADEWALE ADELAJA', 'TEACH', NULL, '1972-06-14 00:00:00', 'MALE', 'UNKOWN', 'MARRIED', 'MRS. TITILAYO', 4, 'Ogun', 'IJEBU ODE', 'Ijebu Ode', 'Nigerian', '19, AKEWUKEWE STREET, IJESHATEDO, LAGOS', NULL, NULL, NULL, '08035306773', 'OND', 'None', 'Business Administration', 'BUSINESS', NULL, NULL, 'ANDREW', NULL, '', NULL, NULL, NULL),
 (4719, '004217', '004217', 'OGUNDEJI', 'OLUMIDE OYINDAMOLA', 'ALADURA', NULL, '1969-06-28 00:00:00', 'MALE', 'UNKOWN', 'MARRIED', 'MRS. MARIAM ', 4, 'Ekiti', 'IKOLE', 'Ikole', 'Nigerian', '9, ADERIBIGBE SHITTA STREET, MARYLAND LAGOS.', NULL, NULL, NULL, '08033213116', 'HND', 'None', 'Not Applicable', 'ENGINEER', NULL, NULL, 'NOT APPLICABLE', NULL, '', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_receiptnumberpool`
--- (See below for the actual view)
---
-DROP VIEW IF EXISTS `vw_receiptnumberpool`;
-CREATE TABLE IF NOT EXISTS `vw_receiptnumberpool` (
-`ReceiptNumber` varchar(15)
-,`ReceiptNumberRange` int(11)
-,`CashierAssigned` varchar(255)
-,`AssignedBy` varchar(255)
-,`AssignedDate` datetime
-,`UsedReceiptNumber` int(11)
-,`UsuageStatus` char(1)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_reversal_transact`
--- (See below for the actual view)
---
-DROP VIEW IF EXISTS `vw_reversal_transact`;
-CREATE TABLE IF NOT EXISTS `vw_reversal_transact` (
-`trans_id` varchar(50)
-,`invoicenum` varchar(50)
-,`reversedreceiptnumber` varchar(50)
-,`memid` varchar(50)
-,`Name_member` varchar(50)
-,`sex` varchar(10)
-,`branch_name` varchar(50)
-,`band_name` varchar(100)
-,`Amount_Paid` decimal(18,2)
-,`Payment_Type` varchar(255)
-,`payment_description` text
-,`payment_mode` varchar(25)
-,`date_received` datetime
-,`reversal_status` char(1)
-,`recusername` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_tb_payment`
--- (See below for the actual view)
---
-DROP VIEW IF EXISTS `vw_tb_payment`;
-CREATE TABLE IF NOT EXISTS `vw_tb_payment` (
-`trans_id` varchar(50)
-,`invoicenum` varchar(50)
-,`memid` varchar(50)
-,`Name_member` varchar(50)
-,`sex` varchar(10)
-,`branch_name` varchar(50)
-,`band_name` varchar(100)
-,`Amount_Paid` decimal(18,2)
-,`Payment_Type` varchar(255)
-,`payment_description` text
-,`payment_mode` varchar(25)
-,`date_received` datetime
-,`reversal_status` char(1)
-,`recusername` varchar(50)
-,`mobile_no` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_tb_payment_tmp`
--- (See below for the actual view)
---
-DROP VIEW IF EXISTS `vw_tb_payment_tmp`;
-CREATE TABLE IF NOT EXISTS `vw_tb_payment_tmp` (
-`trans_id` varchar(50)
-,`invoicenum` varchar(50)
-,`reversedreceiptnumber` varchar(50)
-,`memid` varchar(50)
-,`Name_member` varchar(50)
-,`sex` varchar(10)
-,`branch_name` varchar(50)
-,`band_name` varchar(100)
-,`Amount_Paid` decimal(18,2)
-,`Payment_Type` varchar(255)
-,`payment_description` text
-,`payment_mode` varchar(25)
-,`date_received` datetime
-,`reversal_purpose` varchar(255)
-,`reversal_status` char(1)
-,`Dem1000` int(11)
-,`Dem500` int(11)
-,`Dem200` int(11)
-,`Dem100` int(11)
-,`Dem50` int(11)
-,`Dem20` int(11)
-,`Dem10` int(11)
-,`Dem5` int(11)
-,`TransactionCardNumber` varchar(4)
-,`DateReceived` datetime
-,`recusername` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_tithe_payment`
--- (See below for the actual view)
---
-DROP VIEW IF EXISTS `vw_tithe_payment`;
-CREATE TABLE IF NOT EXISTS `vw_tithe_payment` (
-`trans_id` varchar(50)
-,`invoicenum` varchar(50)
-,`memid` varchar(50)
-,`Name_member` varchar(50)
-,`branch_name` varchar(50)
-,`band_name` varchar(100)
-,`Amount_Paid` decimal(18,2)
-,`payment_description` text
-,`payment_mode` varchar(25)
-,`date_received` datetime
-,`recusername` varchar(50)
-,`Dem1000` int(11)
-,`Dem500` int(11)
-,`Dem50` int(11)
-,`Dem200` int(11)
-,`Dem100` int(11)
-,`Dem20` int(11)
-,`Dem10` int(11)
-,`Dem5` int(11)
-,`TransactionCardNumber` varchar(4)
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_receiptnumberpool`
---
-DROP TABLE IF EXISTS `vw_receiptnumberpool`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_receiptnumberpool`  AS  select `receiptnumberpool`.`ReceiptNumber` AS `ReceiptNumber`,`receiptnumberpool`.`ReceiptNumberRange` AS `ReceiptNumberRange`,`receiptnumberpool`.`CashierAssigned` AS `CashierAssigned`,`receiptnumberpool`.`AssignedBy` AS `AssignedBy`,`receiptnumberpool`.`AssignedDate` AS `AssignedDate`,`receiptnumberpool`.`UsedReceiptNumber` AS `UsedReceiptNumber`,`receipt_log`.`UsuageStatus` AS `UsuageStatus` from (`receiptnumberpool` join `receipt_log` on((`receipt_log`.`ReceiptNumber` = `receiptnumberpool`.`ReceiptNumber`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_reversal_transact`
---
-DROP TABLE IF EXISTS `vw_reversal_transact`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_reversal_transact`  AS  select `tb_payment`.`trans_id` AS `trans_id`,`tb_payment`.`invoicenum` AS `invoicenum`,`tb_payment`.`reversedreceiptnumber` AS `reversedreceiptnumber`,`tb_payment`.`memid` AS `memid`,`tb_payment`.`Name_member` AS `Name_member`,`tb_payment`.`sex` AS `sex`,`tb_payment`.`branch_name` AS `branch_name`,`tb_payment`.`band_name` AS `band_name`,`tb_payment`.`Amount_Paid` AS `Amount_Paid`,`tb_payment`.`Payment_Type` AS `Payment_Type`,`tb_payment`.`payment_description` AS `payment_description`,`tb_payment`.`payment_mode` AS `payment_mode`,`tb_payment`.`date_received` AS `date_received`,`tb_payment`.`reversal_status` AS `reversal_status`,`tb_payment`.`recusername` AS `recusername` from (`tb_payment` join `reversedtransactions` on((`tb_payment`.`invoicenum` = `reversedtransactions`.`invoicenum`))) where (`tb_payment`.`reversal_status` = 2) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_tb_payment`
---
-DROP TABLE IF EXISTS `vw_tb_payment`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_tb_payment`  AS  select `tb_payment`.`trans_id` AS `trans_id`,`tb_payment`.`invoicenum` AS `invoicenum`,`tb_payment`.`memid` AS `memid`,`tb_payment`.`Name_member` AS `Name_member`,`tb_payment`.`sex` AS `sex`,`tb_payment`.`branch_name` AS `branch_name`,`tb_payment`.`band_name` AS `band_name`,`tb_payment`.`Amount_Paid` AS `Amount_Paid`,`tb_payment`.`Payment_Type` AS `Payment_Type`,`tb_payment`.`payment_description` AS `payment_description`,`tb_payment`.`payment_mode` AS `payment_mode`,`tb_payment`.`date_received` AS `date_received`,`tb_payment`.`reversal_status` AS `reversal_status`,`tb_payment`.`recusername` AS `recusername`,`tb_personinfo`.`mobile_no` AS `mobile_no` from (`tb_payment` join `tb_personinfo` on((`tb_payment`.`memid` = `tb_personinfo`.`memberno`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_tb_payment_tmp`
---
-DROP TABLE IF EXISTS `vw_tb_payment_tmp`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_tb_payment_tmp`  AS  select `tb_payment_reversed_tmp`.`trans_id` AS `trans_id`,`tb_payment_reversed_tmp`.`invoicenum` AS `invoicenum`,`tb_payment_reversed_tmp`.`reversedreceiptnumber` AS `reversedreceiptnumber`,`tb_payment_reversed_tmp`.`memid` AS `memid`,`tb_payment_reversed_tmp`.`Name_member` AS `Name_member`,`tb_payment_reversed_tmp`.`sex` AS `sex`,`tb_payment_reversed_tmp`.`branch_name` AS `branch_name`,`tb_payment_reversed_tmp`.`band_name` AS `band_name`,`tb_payment_reversed_tmp`.`Amount_Paid` AS `Amount_Paid`,`tb_payment_reversed_tmp`.`Payment_Type` AS `Payment_Type`,`tb_payment_reversed_tmp`.`payment_description` AS `payment_description`,`tb_payment_reversed_tmp`.`payment_mode` AS `payment_mode`,`tb_payment_reversed_tmp`.`date_received` AS `date_received`,`tb_payment_reversed_tmp`.`reversal_purpose` AS `reversal_purpose`,`tb_payment_reversed_tmp`.`reversal_status` AS `reversal_status`,`denominationanalysis_reversed_tmp`.`Dem1000` AS `Dem1000`,`denominationanalysis_reversed_tmp`.`Dem500` AS `Dem500`,`denominationanalysis_reversed_tmp`.`Dem200` AS `Dem200`,`denominationanalysis_reversed_tmp`.`Dem100` AS `Dem100`,`denominationanalysis_reversed_tmp`.`Dem50` AS `Dem50`,`denominationanalysis_reversed_tmp`.`Dem20` AS `Dem20`,`denominationanalysis_reversed_tmp`.`Dem10` AS `Dem10`,`denominationanalysis_reversed_tmp`.`Dem5` AS `Dem5`,`denominationanalysis_reversed_tmp`.`TransactionCardNumber` AS `TransactionCardNumber`,`denominationanalysis_reversed_tmp`.`Date_Received` AS `DateReceived`,`tb_payment_reversed_tmp`.`recusername` AS `recusername` from (`tb_payment_reversed_tmp` join `denominationanalysis_reversed_tmp` on((`tb_payment_reversed_tmp`.`reversedreceiptnumber` = `denominationanalysis_reversed_tmp`.`reversedreceiptnumber`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_tithe_payment`
---
-DROP TABLE IF EXISTS `vw_tithe_payment`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_tithe_payment`  AS  select `tb_payment`.`trans_id` AS `trans_id`,`tb_payment`.`invoicenum` AS `invoicenum`,`tb_payment`.`memid` AS `memid`,`tb_payment`.`Name_member` AS `Name_member`,`tb_payment`.`branch_name` AS `branch_name`,`tb_payment`.`band_name` AS `band_name`,`tb_payment`.`Amount_Paid` AS `Amount_Paid`,`tb_payment`.`payment_description` AS `payment_description`,`tb_payment`.`payment_mode` AS `payment_mode`,`tb_payment`.`date_received` AS `date_received`,`tb_payment`.`recusername` AS `recusername`,`denominationanalysis`.`Dem1000` AS `Dem1000`,`denominationanalysis`.`Dem500` AS `Dem500`,`denominationanalysis`.`Dem50` AS `Dem50`,`denominationanalysis`.`Dem200` AS `Dem200`,`denominationanalysis`.`Dem100` AS `Dem100`,`denominationanalysis`.`Dem20` AS `Dem20`,`denominationanalysis`.`Dem10` AS `Dem10`,`denominationanalysis`.`Dem5` AS `Dem5`,`denominationanalysis`.`TransactionCardNumber` AS `TransactionCardNumber` from (`tb_payment` join `denominationanalysis` on((`tb_payment`.`invoicenum` = `denominationanalysis`.`InvoiceNum`))) ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
