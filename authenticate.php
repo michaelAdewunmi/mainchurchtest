@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !is_ajax()) {
 			}
 
 			// Redirect user
-			header('Location:index.php');
+			header('Location:verify_user_with_token.php');
 
 
 

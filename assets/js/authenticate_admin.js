@@ -10,6 +10,7 @@ class authenticateAdmin {
         $(".loginform").submit(this.createCookie);
         $(".end-the-day").on('click', this.openPageModal);
         $(".do-not-end-day").on('click', this.closeModal);
+        // $(".do-not-end-day").on('click', this.sendEmailToCashier);
     }
 
     createCookie() {
@@ -60,8 +61,6 @@ class authenticateAdmin {
                 data: credentials,
             })
         }, 2000);
-
-
     }
 }
 

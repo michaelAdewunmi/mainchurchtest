@@ -49,6 +49,7 @@ if ($db->count>=1) {
     $row = $db->get('start_and_end_day_controller');
 
     if ($db->count>=1) {
+
         $data = Array (
             "day"               => date('Y-m-d'),
             "day_started"       => true,
@@ -86,6 +87,16 @@ CREATE TABLE `start_and_end_day_controller` (
     `day_ended` VARCHAR(7) DEFAULT 'NOT YET',
     `time_day_ended` VARCHAR(50) DEFAULT 'NULL',
     `endorsed_by` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `cashiers_login_tokens` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `token` BIGINT NOT NULL,
+    `raw_date` BIGINT NOT NULL,
+    `nice_date` TIMESTAMP NOT NULL,
+    `created_for` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     */
